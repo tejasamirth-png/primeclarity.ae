@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<!--
+  Gumroad link is live: https://clarityprime.gumroad.com/l/yphfp
+  To send buyers straight to checkout, append ?wanted=true to that URL.
+  (Optional overlay checkout that stays on this site: see the note near the bottom of this file.)
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UAE Corporate Tax Guide — Prime Clarity</title>
+<meta name="description" content="A practical UAE Corporate Tax guide — registration, calculation, compliance and reliefs, distilled into an actionable reference. By Prime Clarity.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0C1E26;--ink-2:#15333F;--paper:#FBF9F4;--paper-2:#F2EEE4;
+    --line:#e3ddcf;--line-ink:rgba(251,249,244,.14);--muted:#5C6B6F;--muted-ink:#9fb0b3;--gold:#C99A3F;--gold-2:#dcb463;
+    --display:"Bricolage Grotesque",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--gold)}
+  h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.02em;line-height:1.06}
+  .btn{font-family:var(--body);font-weight:600;font-size:15px;padding:13px 24px;border-radius:2px;border:1px solid transparent;transition:all .2s;white-space:nowrap;display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+  .btn-gold{background:var(--gold);color:var(--ink)}
+  .btn-gold:hover{background:var(--gold-2)}
+  .btn-ghost{background:transparent;color:var(--paper);border-color:var(--line-ink)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(12,30,38,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-ink)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:11px;color:var(--paper);font-family:var(--display);font-weight:600;font-size:18px}
+  .brand .mark{width:24px;height:24px;flex:none}
+  .nav-links{display:flex;align-items:center;gap:24px}
+  .nav-links a{color:var(--muted-ink);font-size:14.5px;transition:color .2s}
+  .nav-links a:hover{color:var(--paper)}
+  .nav-links .btn{padding:10px 18px;font-size:14.5px}
+  /* hero */
+  .ghero{background:var(--ink);color:var(--paper)}
+  .ghero .wrap{padding:80px 28px 88px}
+  .ghero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .ghero h1{font-size:clamp(34px,5vw,56px);margin:20px 0 18px;max-width:16ch}
+  .ghero p.lead{font-size:18px;color:#cdd9da;max-width:46ch}
+  .buybox{margin-top:32px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .price{font-family:var(--display);font-size:40px;color:var(--paper)}
+  .price small{font-family:var(--mono);font-size:14px;color:var(--muted-ink);letter-spacing:.08em;display:block;margin-top:2px}
+  .trustline{font-family:var(--mono);font-size:12px;color:var(--muted-ink);margin-top:16px;display:flex;align-items:center;gap:8px}
+  .trustline::before{content:"";width:6px;height:6px;border-radius:50%;background:#5fcf9e}
+  /* book cover */
+  .cover{aspect-ratio:3/4;max-width:330px;margin:0 auto;border-radius:6px 10px 10px 6px;
+    background:linear-gradient(150deg,#1d4250,#0c1e26 70%);
+    border:1px solid var(--line-ink);box-shadow:0 40px 80px -34px rgba(0,0,0,.8), inset 6px 0 0 -2px rgba(201,154,63,.5);
+    padding:34px 30px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+  .cover .cmark{display:flex;align-items:center;gap:9px;color:var(--paper);font-family:var(--display);font-weight:600;font-size:15px}
+  .cover .cmid h2{color:var(--paper);font-size:30px;line-height:1.05}
+  .cover .cmid .yr{font-family:var(--mono);color:var(--gold);font-size:13px;letter-spacing:.16em;margin-top:12px;display:block}
+  .cover .cfoot{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-ink)}
+  .cover .pulse{position:absolute;right:-30px;bottom:64px;opacity:.5}
+  /* sections */
+  section{padding:78px 0}
+  .sec-head{max-width:60ch;margin-bottom:40px}
+  .sec-head h2{font-size:clamp(28px,3.4vw,40px);margin:16px 0 12px}
+  .sec-head p{color:var(--muted);font-size:17px}
+  .checklist{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .checklist .ci{background:var(--paper);padding:22px 24px;display:flex;gap:14px;align-items:flex-start;font-size:15px;color:#24373d}
+  .checklist .ci svg{flex:none;margin-top:3px}
+  .who{background:var(--ink-2);color:var(--paper)}
+  .who .sec-head h2{color:var(--paper)}
+  .who .sec-head p{color:var(--muted-ink)}
+  .who-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line-ink);border-radius:4px;overflow:hidden}
+  .who-grid div{padding:24px 18px;border-right:1px solid var(--line-ink);font-size:14px;color:#cdd9da;line-height:1.5}
+  .who-grid div:last-child{border-right:0}
+  .who-grid .wn{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.12em;display:block;margin-bottom:10px}
+  .why p{max-width:60ch;color:#24373d;font-size:17px;margin-bottom:16px}
+  .cta-band{background:var(--ink);color:var(--paper);text-align:center}
+  .cta-band h2{font-size:clamp(28px,3.6vw,44px);margin-bottom:14px}
+  .cta-band p{color:var(--muted-ink);margin-bottom:28px}
+  .cta-band .price{margin-bottom:22px}
+  /* footer */
+  footer{background:var(--ink-2);color:var(--muted-ink);padding:54px 0 30px;border-top:1px solid var(--line-ink)}
+  .foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:40px}
+  .foot-grid .brand{color:var(--paper)}
+  .foot-col h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-ink);margin-bottom:14px;font-weight:400}
+  .foot-col a{display:block;color:#bfcccf;font-size:14.5px;margin-bottom:9px;transition:color .2s}
+  .foot-col a:hover{color:var(--gold)}
+  .foot-bottom{border-top:1px solid var(--line-ink);padding-top:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;font-family:var(--mono)}
+  .foot-bottom a{color:var(--muted-ink);transition:color .2s}
+  .foot-bottom a:hover{color:var(--gold)}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  @media(max-width:860px){
+    .ghero-grid{grid-template-columns:1fr;gap:44px}
+    .checklist{grid-template-columns:1fr}
+    .who-grid{grid-template-columns:1fr 1fr}
+    .who-grid div{border-bottom:1px solid var(--line-ink)}
+  }
+  @media(max-width:560px){.nav-links{gap:14px}.nav-links .home-link{display:none}.who-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="Prime Clarity home">
+      <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="22" height="22" rx="3" stroke="#C99A3F" stroke-width="1.5"/>
+        <path d="M4 14 L8 14 L10 8 L13 18 L15 11 L20 11" stroke="#C99A3F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      Prime&nbsp;Clarity
+    </a>
+    <nav class="nav-links">
+      <a class="home-link" href="index.html">Home</a>
+      <a class="home-link" href="index.html#services">Services</a>
+      <a class="btn btn-gold" href="https://clarityprime.gumroad.com/l/yphfp" target="_blank" rel="noopener">Get the guide</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="ghero">
+  <div class="wrap">
+    <div class="ghero-grid">
+      <div>
+        <span class="eyebrow">Digital guide · Instant download</span>
+        <h1>The UAE Corporate Tax Guide.</h1>
+        <p class="lead">Complex regulations distilled into an actionable reference — registration, calculation, compliance and reliefs. Written by practising professionals, built to use, not just read.</p>
+        <div class="buybox">
+          <div class="price">USD 29<small>One-time · lifetime access</small></div>
+          <a class="btn btn-gold" href="https://clarityprime.gumroad.com/l/yphfp" target="_blank" rel="noopener">Get the guide →</a>
+        </div>
+        <div class="trustline">Secure checkout via Gumroad · instant digital delivery</div>
+      </div>
+      <div class="cover" aria-hidden="true">
+        <div class="cmark">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="1" y="1" width="22" height="22" rx="3" stroke="#C99A3F" stroke-width="1.5"/><path d="M4 14 L8 14 L10 8 L13 18 L15 11 L20 11" stroke="#C99A3F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          Prime Clarity
+        </div>
+        <div class="cmid">
+          <h2>UAE Corporate Tax</h2>
+          <span class="yr">A PRACTITIONER'S GUIDE · 2026</span>
+        </div>
+        <svg class="pulse" width="180" height="60" viewBox="0 0 180 60"><path d="M0 30 L60 30 L72 10 L84 50 L96 30 L180 30" fill="none" stroke="#C99A3F" stroke-width="2" stroke-linecap="round"/></svg>
+        <div class="cfoot">Registration · Calculation · Compliance · Relief</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What's inside</span>
+      <h2>Everything you need to get corporate tax right.</h2>
+    </div>
+    <div class="checklist">
+      <div class="ci"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M2 8.5 L6 12 L14 3.5" stroke="#C99A3F" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Complete overview of UAE Corporate Tax Law provisions and requirements</div>
+      <div class="ci"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M2 8.5 L6 12 L14 3.5" stroke="#C99A3F" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Registration procedures and timelines for mainland and free zone entities</div>
+      <div class="ci"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M2 8.5 L6 12 L14 3.5" stroke="#C99A3F" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Tax calculation methodologies with practical examples</div>
+      <div class="ci"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M2 8.5 L6 12 L14 3.5" stroke="#C99A3F" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Compliance calendar and critical filing deadlines</div>
+      <div class="ci"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M2 8.5 L6 12 L14 3.5" stroke="#C99A3F" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Transfer pricing documentation requirements</div>
+      <div class="ci"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M2 8.5 L6 12 L14 3.5" stroke="#C99A3F" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Small business relief criteria and optimisation strategies</div>
+      <div class="ci"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M2 8.5 L6 12 L14 3.5" stroke="#C99A3F" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Common pitfalls and how to avoid penalties</div>
+      <div class="ci"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M2 8.5 L6 12 L14 3.5" stroke="#C99A3F" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Real-world case studies and scenarios</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="who">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Who it's for</span>
+      <h2>Built for the people responsible for getting it right.</h2>
+    </div>
+    <div class="who-grid">
+      <div><span class="wn">01</span>Founders and business owners preparing for tax compliance</div>
+      <div><span class="wn">02</span>Finance professionals managing UAE entity taxation</div>
+      <div><span class="wn">03</span>Accounting students and exam candidates</div>
+      <div><span class="wn">04</span>CFOs and controllers in UAE-based companies</div>
+      <div><span class="wn">05</span>Consultants advising clients on UAE tax matters</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Why this guide</span><h2>A reference tool, not theory.</h2></div>
+    <p>The UAE's corporate tax regime is a significant shift in the region's fiscal landscape. This guide distils complex regulations into actionable knowledge — saving you hours of research and reducing compliance risk.</p>
+    <p>Created by practising tax professionals with direct experience in UAE corporate tax advisory, it's designed to be used at your desk, not left on a shelf.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="wrap">
+    <span class="eyebrow" style="justify-content:center;display:flex">Get started</span>
+    <h2 style="margin-top:16px">Get the UAE Corporate Tax Guide.</h2>
+    <p>Instant download. Lifetime access. Updated as the regime evolves.</p>
+    <div class="price" style="text-align:center">USD 29<small>One-time payment</small></div>
+    <a class="btn btn-gold" href="https://clarityprime.gumroad.com/l/yphfp" target="_blank" rel="noopener">Get the guide →</a>
+    <p style="font-family:var(--mono);font-size:12px;color:var(--muted-ink);margin-top:20px">Secure checkout via Gumroad · instant digital delivery</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div style="max-width:280px">
+        <a class="brand" href="index.html">
+          <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="1" y="1" width="22" height="22" rx="3" stroke="#C99A3F" stroke-width="1.5"/>
+            <path d="M4 14 L8 14 L10 8 L13 18 L15 11 L20 11" stroke="#C99A3F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          Prime&nbsp;Clarity
+        </a>
+        <p style="margin-top:16px;font-size:14px;color:#bfcccf">Boutique accounting &amp; CFO advisory for UAE SMEs. Abu Dhabi, UAE.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Firm</h4>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#approach">Our method</a>
+        <a href="index.html#rakam">Rakam</a>
+        <a href="index.html#about">About</a>
+      </div>
+      <div class="foot-col">
+        <h4>Resources</h4>
+        <a href="guide.html">UAE Corporate Tax Guide</a>
+        <a href="index.html#watch">Watch</a>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Prime Clarity LLC SPC · Abu Dhabi, United Arab Emirates. All rights reserved.</span>
+      <span><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a></span>
+    </div>
+  </div>
+</footer>
+
+<!--
+  OPTIONAL: on-site overlay checkout (keeps buyers on your page).
+  1) add this script tag right before </body>:  <script src="https://gumroad.com/js/gumroad.js"></script>
+  2) add the class "gumroad-button" to each "Get the guide" link above, keeping the same href.
+-->
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>

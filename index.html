@@ -1,650 +1,826 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prime Clarity - Financial Advisory & Corporate Tax Expertise in UAE</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prime Clarity — Accounting & CFO Advisory for UAE SMEs</title>
+<meta name="description" content="Prime Clarity is a UAE-licensed boutique accounting and CFO advisory firm in Abu Dhabi. Bookkeeping, VAT, corporate tax, IFRS reporting and fractional CFO support — run like a system.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0C1E26;
+    --ink-2:#15333F;
+    --ink-3:#1d4250;
+    --paper:#FBF9F4;
+    --paper-2:#F2EEE4;
+    --line:#e3ddcf;
+    --line-ink:rgba(251,249,244,.14);
+    --muted:#5C6B6F;
+    --muted-ink:#9fb0b3;
+    --gold:#C99A3F;
+    --gold-2:#dcb463;
+    --maxw:1180px;
+    --display:"Bricolage Grotesque",system-ui,sans-serif;
+    --body:"IBM Plex Sans",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--body);
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--gold);display:inline-block}
+  h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.04;letter-spacing:-.02em}
 
-        :root {
-            --primary: #1a1a2e;
-            --secondary: #0f4c75;
-            --accent: #c8a972;
-            --text: #2d3436;
-            --light: #f8f9fa;
-            --white: #ffffff;
-        }
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:transparent;
+    transition:padding .5s cubic-bezier(.22,1,.36,1);
+    will-change:padding;
+  }
+  header.nav.scrolled{padding-top:12px}
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    height:68px;position:relative;border-radius:0;background:transparent;
+    transition:height .5s cubic-bezier(.22,1,.36,1),background .4s ease,
+               box-shadow .5s ease,border-radius .5s ease;
+  }
+  .nav-inner>*{position:relative;z-index:1}
+  /* ---- iOS-style liquid glass on scroll ---- */
+  header.nav.scrolled .nav-inner{
+    height:58px;border-radius:20px;
+    background:rgba(13,32,40,.55);
+    -webkit-backdrop-filter:blur(18px) saturate(185%);
+    backdrop-filter:blur(18px) saturate(185%);
+    box-shadow:
+      0 10px 34px -12px rgba(0,0,0,.55),
+      inset 0 1px 0 rgba(255,255,255,.38),
+      inset 0 -1px 0 rgba(255,255,255,.06),
+      inset 0 0 0 1px rgba(255,255,255,.08);
+  }
+  header.nav.scrolled .nav-inner::before{
+    content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+    background:linear-gradient(115deg,rgba(255,255,255,.22),rgba(255,255,255,0) 34%,
+               rgba(255,255,255,0) 64%,rgba(255,255,255,.12));
+    background-size:220% 100%;mix-blend-mode:screen;opacity:.85;
+    animation:sheen 8s ease-in-out infinite;
+  }
+  @keyframes sheen{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
+  .brand{display:flex;align-items:center;gap:11px;color:var(--paper);font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:-.01em}
+  .brand .mark{width:24px;height:24px;flex:none}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{color:var(--muted-ink);font-size:14.5px;transition:color .2s}
+  .nav-links a:hover{color:var(--paper)}
+  .btn{
+    font-family:var(--body);font-weight:600;font-size:14.5px;
+    padding:11px 20px;border-radius:2px;cursor:pointer;border:1px solid transparent;
+    display:inline-flex;align-items:center;gap:8px;transition:all .2s;white-space:nowrap;
+  }
+  .btn-gold{background:var(--gold);color:var(--ink)}
+  .btn-gold:hover{background:var(--gold-2)}
+  .btn-ghost{background:transparent;color:var(--paper);border-color:var(--line-ink)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .btn-dark{background:var(--ink);color:var(--paper)}
+  .btn-dark:hover{background:var(--ink-2)}
+  .nav-toggle{display:none;background:none;border:0;cursor:pointer;flex-direction:column;gap:5px;padding:8px}
+  .nav-toggle span{width:22px;height:2px;background:var(--paper);display:block;transition:.25s}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-            background: var(--white);
-        }
+  /* ---------- HERO ---------- */
+  .hero{background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
+  .hero .wrap{position:relative;z-index:2;padding-top:96px;padding-bottom:104px}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center}
+  .hero h1{font-size:clamp(40px,6.2vw,74px);margin:22px 0 22px;max-width:14ch}
+  .hero h1 .accent{color:var(--gold)}
+  .hero p.lead{font-size:clamp(17px,1.4vw,19px);color:#cdd9da;max-width:50ch}
+  .hero-cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+  /* pulse panel */
+  .pulse-panel{
+    border:1px solid var(--line-ink);border-radius:4px;background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,0));
+    padding:24px 22px 20px;
+  }
+  .pulse-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .pulse-head .t{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-ink)}
+  .pulse-head .v{font-family:var(--mono);font-size:12px;color:var(--gold)}
+  .pulse-svg{width:100%;height:108px;display:block}
+  .pulse-path{fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.6s ease forwards .4s}
+  .pulse-base{fill:none;stroke:var(--line-ink);stroke-width:1}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .pulse-foot{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;border-top:1px solid var(--line-ink);padding-top:14px}
+  .pulse-foot div{font-family:var(--mono);font-size:11px;color:var(--muted-ink)}
+  .pulse-foot strong{display:block;color:var(--paper);font-size:17px;font-weight:500;margin-top:3px}
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #e0e0e0;
-            z-index: 1000;
-        }
+  /* ---------- TRUST STRIP (inside hero) ---------- */
+  .trust{display:flex;flex-wrap:wrap;gap:12px 34px;margin-top:54px;padding-top:26px;border-top:1px solid var(--line-ink)}
+  .trust span{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-ink);display:flex;align-items:center;gap:9px}
+  .trust span::before{content:"";width:5px;height:5px;background:var(--gold);border-radius:50%}
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.2rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+  /* ---------- STACKING PANELS ---------- */
+  .panel{
+    position:sticky;top:0;min-height:100vh;min-height:100svh;
+    display:flex;align-items:center;
+    border-radius:26px 26px 0 0;overflow:hidden;
+    box-shadow:0 -22px 55px -30px rgba(0,0,0,.55);
+  }
+  .panel>.wrap{width:100%}
+  .panel.hero{border-radius:0;box-shadow:none}   /* first panel: no lip */
+  /* opaque backgrounds so each panel fully covers the one beneath */
+  #services,#pricing,#about{background:var(--paper)}
+  /* ---- VSL / watch ---- */
+  #watch{background:var(--ink-2)}
+  #watch .sec-head h2{color:var(--paper)}
+  #watch .sec-head p{color:var(--muted-ink)}
+  .video{position:relative;width:100%;max-width:920px;margin:0 auto;aspect-ratio:16/9;
+    border-radius:10px;overflow:hidden;border:1px solid var(--line-ink);
+    box-shadow:0 30px 70px -40px rgba(0,0,0,.7)}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .vsl-poster{position:absolute;inset:0;width:100%;height:100%;border:0;cursor:pointer;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;
+    background:radial-gradient(120% 120% at 50% 35%,#1d4250 0%,#0c1e26 72%)}
+  .vsl-poster .play{width:74px;height:74px;border-radius:50%;background:var(--gold);
+    display:flex;align-items:center;justify-content:center;transition:transform .2s;
+    animation:pulsering 2.4s ease-out infinite}
+  .vsl-poster:hover .play{transform:scale(1.06)}
+  .vsl-poster .play svg{margin-left:4px}
+  .vsl-label{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-ink)}
+  @keyframes pulsering{0%{box-shadow:0 0 0 0 rgba(201,154,63,.45)}70%{box-shadow:0 0 0 22px rgba(201,154,63,0)}100%{box-shadow:0 0 0 0 rgba(201,154,63,0)}}
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            letter-spacing: -0.5px;
-        }
+  /* ---------- SECTIONS ---------- */
+  section{padding:96px 0}
+  .sec-head{max-width:62ch;margin-bottom:54px}
+  .sec-head h2{font-size:clamp(30px,3.6vw,46px);margin:18px 0 16px}
+  .sec-head p{color:var(--muted);font-size:17px;max-width:54ch}
 
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
+  /* services */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .svc{background:var(--paper);padding:34px 30px;transition:background .25s}
+  .svc:hover{background:#fff}
+  .svc .num{font-family:var(--mono);font-size:12px;color:var(--gold);letter-spacing:.1em}
+  .svc h3{font-size:21px;margin:16px 0 10px}
+  .svc p{color:var(--muted);font-size:15px}
 
-        .nav-links a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
+  /* approach / vital signs */
+  .approach{background:var(--ink);color:var(--paper)}
+  .approach .sec-head h2{color:var(--paper)}
+  .approach .sec-head p{color:var(--muted-ink)}
+  .vitals{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line-ink);border-radius:4px;overflow:hidden}
+  .vital{padding:30px 22px;border-right:1px solid var(--line-ink);position:relative}
+  .vital:last-child{border-right:0}
+  .vital .vnum{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.12em}
+  .vital .tick{height:30px;margin:16px 0;display:flex;align-items:center}
+  .vital .tick svg{width:100%;height:24px}
+  .vital h3{font-size:18px;margin-bottom:8px}
+  .vital p{font-size:13.5px;color:var(--muted-ink);line-height:1.55}
 
-        .nav-links a:hover {
-            color: var(--secondary);
-        }
+  /* pricing */
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .tier{border:1px solid var(--line);background:#fff;border-radius:4px;padding:34px 30px;display:flex;flex-direction:column;position:relative}
+  .tier.featured{border-color:var(--ink);box-shadow:0 24px 60px -34px rgba(12,30,38,.5)}
+  .tier .badge{position:absolute;top:-11px;left:30px;background:var(--gold);color:var(--ink);font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;padding:5px 11px;border-radius:2px;font-weight:500}
+  .tier .tname{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .tier h3{font-size:27px;margin:6px 0 4px}
+  .tier .price{font-family:var(--mono);font-size:15px;color:var(--ink);margin-bottom:4px}
+  .tier .price b{font-size:30px;font-weight:500}
+  .tier .pfor{color:var(--muted);font-size:14px;min-height:42px;margin:18px 0 22px;border-bottom:1px solid var(--line);padding-bottom:20px}
+  .tier ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:28px;flex:1}
+  .tier li{font-size:14.5px;color:var(--ink-2);display:flex;gap:11px;align-items:flex-start}
+  .tier li svg{flex:none;margin-top:4px}
+  .tier .btn{width:100%;justify-content:center}
 
-        /* Hero Section */
-        .hero {
-            margin-top: 80px;
-            padding: 6rem 2rem;
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-            text-align: center;
-        }
+  /* rakam */
+  .rakam{background:var(--ink-2);color:var(--paper);border-top:1px solid var(--line-ink)}
+  .rakam-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .rakam .tag{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line-ink);padding:6px 12px;border-radius:2px;display:inline-block}
+  .rakam h2{font-size:clamp(28px,3.4vw,42px);margin:20px 0 16px}
+  .rakam p{color:#cdd9da;font-size:16.5px;max-width:46ch}
+  .rakam .feat{display:flex;gap:18px;margin-top:26px;flex-wrap:wrap}
+  .rakam .feat div{font-family:var(--mono);font-size:13px;color:var(--muted-ink)}
+  .rakam .feat strong{display:block;color:var(--paper);font-size:24px;font-weight:500;font-family:var(--display)}
+  .dash{border:1px solid var(--line-ink);border-radius:6px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));padding:22px}
+  .dash-row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--line-ink)}
+  .dash-row:last-child{border-bottom:0}
+  .dash-row .l{font-size:13.5px;color:var(--muted-ink)}
+  .dash-row .r{font-family:var(--mono);font-size:15px;color:var(--paper)}
+  .dash-row .r.up{color:#5fcf9e}
+  .dash-bar{height:6px;background:var(--line-ink);border-radius:3px;margin-top:18px;overflow:hidden}
+  .dash-bar i{display:block;height:100%;width:72%;background:var(--gold);border-radius:3px}
 
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+  /* about */
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+  .about .quote{font-family:var(--display);font-size:clamp(22px,2.6vw,30px);line-height:1.3;letter-spacing:-.01em}
+  .about .quote span{color:var(--gold)}
+  .about .who{margin-top:26px;font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.04em}
+  .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .about-stats div{background:var(--paper);padding:26px 24px}
+  .about-stats .n{font-family:var(--display);font-size:34px;color:var(--ink)}
+  .about-stats .k{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
 
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            letter-spacing: -1px;
-        }
+  /* cta */
+  .cta-final{background:var(--ink);color:var(--paper);text-align:center}
+  .cta-final h2{font-size:clamp(32px,4.4vw,56px);max-width:18ch;margin:0 auto 20px}
+  .cta-final p{color:var(--muted-ink);font-size:18px;max-width:48ch;margin:0 auto 36px}
+  .cta-final .hero-cta{justify-content:center}
+  /* ---- contact form ---- */
+  #contact{text-align:left}
+  .contact-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;width:100%}
+  #contact .contact-intro h2{font-size:clamp(30px,3.6vw,46px);max-width:14ch;margin:16px 0 16px;color:var(--paper)}
+  #contact .contact-intro>p{color:var(--muted-ink);font-size:17px;max-width:42ch;margin:0 auto 30px 0}
+  .contact-methods{display:flex;flex-direction:column;gap:15px}
+  .cm{display:flex;align-items:flex-start;gap:12px;color:#cdd9da;font-size:14px;font-family:var(--mono);line-height:1.5}
+  .cm svg{flex:none;margin-top:1px;color:var(--gold)}
+  a.cm{transition:color .2s}
+  a.cm:hover{color:var(--paper)}
+  .contact-form{background:var(--paper);border-radius:8px;padding:30px 28px;box-shadow:0 34px 80px -44px rgba(0,0,0,.75)}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+  .field input,.field textarea{width:100%;font-family:var(--body);font-size:15px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:4px;padding:11px 13px;transition:border-color .2s,box-shadow .2s}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,154,63,.15)}
+  .field textarea{resize:vertical;min-height:96px}
+  .contact-form .btn{width:100%;justify-content:center;margin-top:4px}
+  .contact-form .btn:disabled{opacity:.6;cursor:wait}
+  .hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+  .form-note{font-size:13.5px;margin:14px 0 0;min-height:18px;color:var(--muted)}
+  .form-note.ok{color:#1f7a52}
+  .form-note.err{color:#b23b2e}
 
-        .hero p {
-            font-size: 1.25rem;
-            color: #5a5a5a;
-            margin-bottom: 2.5rem;
-            line-height: 1.7;
-        }
+  /* footer */
+  footer{background:var(--ink-2);color:var(--muted-ink);padding:54px 0 30px;border-top:1px solid var(--line-ink);position:relative;z-index:2}
+  .foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:40px}
+  .foot-grid .brand{color:var(--paper)}
+  .foot-col h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-ink);margin-bottom:14px;font-weight:400}
+  .foot-col a{display:block;color:#bfcccf;font-size:14.5px;margin-bottom:9px;transition:color .2s}
+  .foot-col a:hover{color:var(--gold)}
+  .foot-bottom{border-top:1px solid var(--line-ink);padding-top:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;font-family:var(--mono)}
+  .foot-bottom a{color:var(--muted-ink);transition:color .2s}
+  .foot-bottom a:hover{color:var(--gold)}
 
-        .cta-primary {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: var(--primary);
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 6px;
-            transition: all 0.3s;
-            border: 2px solid var(--primary);
-        }
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+  .reveal.in{opacity:1;transform:none}
 
-        .cta-primary:hover {
-            background: transparent;
-            color: var(--primary);
-        }
-
-        /* Services Section */
-        .services {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 3rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .service-card {
-            padding: 2.5rem;
-            background: var(--white);
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            transition: all 0.3s;
-        }
-
-        .service-card:hover {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transform: translateY(-4px);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .service-card p {
-            color: #5a5a5a;
-            line-height: 1.7;
-        }
-
-        /* Ebook Landing Page */
-        .ebook-page {
-            display: none;
-            padding: 6rem 2rem;
-            max-width: 900px;
-            margin: 80px auto 0;
-        }
-
-        .ebook-page.active {
-            display: block;
-        }
-
-        .ebook-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .ebook-header h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-
-        .ebook-header .subtitle {
-            font-size: 1.25rem;
-            color: #5a5a5a;
-            margin-bottom: 2rem;
-        }
-
-        .ebook-content {
-            background: var(--white);
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 3rem;
-        }
-
-        .value-section {
-            margin-bottom: 3rem;
-        }
-
-        .value-section h2 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .benefits-list {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .benefits-list li {
-            padding: 1rem 0;
-            border-bottom: 1px solid #f0f0f0;
-            color: var(--text);
-            font-size: 1.05rem;
-        }
-
-        .benefits-list li:before {
-            content: "✓";
-            color: var(--secondary);
-            font-weight: bold;
-            margin-right: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .target-audience {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 8px;
-            margin-bottom: 3rem;
-        }
-
-        .target-audience h3 {
-            font-size: 1.4rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .target-audience ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .target-audience li {
-            padding: 0.5rem 0;
-            color: var(--text);
-        }
-
-        .cta-section {
-            text-align: center;
-            padding: 3rem 0;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1.2rem 3rem;
-            background: var(--secondary);
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            border-radius: 8px;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: none;
-        }
-
-        .cta-button:hover {
-            background: #0d3d5c;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(15, 76, 117, 0.3);
-        }
-
-        .secure-note {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: #7a7a7a;
-        }
-
-        /* About Section */
-        .about {
-            padding: 5rem 2rem;
-            background: var(--light);
-        }
-
-        .about-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .about-text p {
-            color: #5a5a5a;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: var(--white);
-            padding: 3rem 2rem 2rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-
-        .footer-section p,
-        .footer-section a {
-            color: #d0d0d0;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.8rem;
-            line-height: 1.6;
-        }
-
-        .footer-section a:hover {
-            color: var(--white);
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            text-align: center;
-            color: #d0d0d0;
-            font-size: 0.9rem;
-        }
-
-        /* Page System */
-        .page {
-            display: none;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 1.5rem;
-                font-size: 0.9rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .ebook-content {
-                padding: 2rem;
-            }
-
-            .ebook-header h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+  /* responsive */
+  @media(max-width:900px){
+    .nav-links{
+      position:fixed;inset:68px 0 auto 0;background:var(--ink);flex-direction:column;
+      align-items:flex-start;gap:0;padding:8px 28px 24px;border-bottom:1px solid var(--line-ink);
+      transform:translateY(-120%);transition:transform .3s;
+    }
+    .nav-links.open{transform:none}
+    .nav-links a{padding:14px 0;width:100%;border-bottom:1px solid var(--line-ink)}
+    .nav-links .btn{margin-top:16px}
+    .nav-toggle{display:flex}
+    .hero-grid,.rakam-grid,.about-grid{grid-template-columns:1fr;gap:40px}
+    .contact-grid{grid-template-columns:1fr;gap:36px}
+    .svc-grid{grid-template-columns:1fr}
+    .vitals{grid-template-columns:1fr 1fr}
+    .vital{border-right:1px solid var(--line-ink);border-bottom:1px solid var(--line-ink)}
+    .price-grid{grid-template-columns:1fr}
+    section{padding:72px 0}
+  }
+  @media(max-width:520px){
+    .vitals{grid-template-columns:1fr}
+    .pulse-foot{grid-template-columns:1fr 1fr}
+    .about-stats{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none}
+    .pulse-path{stroke-dashoffset:0}
+  }
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+</style>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">Prime Clarity</div>
-            <ul class="nav-links">
-                <li><a href="#" onclick="showPage('home')">Home</a></li>
-                <li><a href="#" onclick="showPage('services')">Services</a></li>
-                <li><a href="#" onclick="showPage('about')">About</a></li>
-                <li><a href="#" onclick="showPage('resources')">Resources</a></li>
-                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
-            </ul>
-        </div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="Prime Clarity home">
+      <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="22" height="22" rx="3" stroke="#C99A3F" stroke-width="1.5"/>
+        <path d="M4 14 L8 14 L10 8 L13 18 L15 11 L20 11" stroke="#C99A3F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      Prime&nbsp;Clarity
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#watch">Watch</a>
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#rakam">Rakam</a>
+      <a href="guide.html">Guide</a>
+      <a href="#about">About</a>
+      <a class="btn btn-gold book-call" href="https://calendly.com/primeclarityconsulting/30min" target="_blank" rel="noopener">Book a call</a>
     </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-    <!-- HOME PAGE -->
-    <div id="home" class="page active">
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Financial Clarity for Growing Businesses</h1>
-                <p>Expert accounting, UAE corporate tax advisory, and financial consulting services designed for founders, professionals, and ambitious enterprises in the UAE.</p>
-                <a href="#" onclick="showPage('services')" class="cta-primary">Explore Services</a>
-            </div>
-        </section>
-
-        <section class="services">
-            <h2 class="section-title">Our Core Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
-                    <h3>Accounting & Bookkeeping</h3>
-                    <p>Comprehensive accounting solutions tailored to UAE businesses. From monthly bookkeeping to financial statement preparation, we ensure your records are accurate and compliant.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🏛️</div>
-                    <h3>UAE Corporate Tax Advisory</h3>
-                    <p>Navigate the UAE's evolving tax landscape with confidence. Strategic planning, compliance management, and optimization strategies for the new corporate tax regime.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">💼</div>
-                    <h3>Financial Advisory</h3>
-                    <p>Strategic financial guidance for founders and businesses. Financial modeling, forecasting, and decision support to drive sustainable growth.</p>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- SERVICES PAGE -->
-    <div id="services" class="page">
-        <section class="services" style="margin-top: 80px;">
-            <h2 class="section-title">Professional Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
-                    <h3>Accounting & Bookkeeping</h3>
-                    <p>Monthly financial reporting, bank reconciliation, accounts payable and receivable management, general ledger maintenance, and year-end financial statements.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🏛️</div>
-                    <h3>UAE Corporate Tax</h3>
-                    <p>Tax registration assistance, quarterly and annual tax compliance, transfer pricing documentation, tax health checks, and strategic tax planning for UAE entities.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📈</div>
-                    <h3>VAT Services</h3>
-                    <p>VAT registration, return filing, VAT reclaim support, compliance reviews, and advisory for complex VAT transactions in the UAE.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">💼</div>
-                    <h3>Financial Advisory</h3>
-                    <p>Business planning, financial forecasting, cash flow management, profitability analysis, and growth strategy consulting for SMEs and startups.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🎓</div>
-                    <h3>Training & Education</h3>
-                    <p>Professional development programs, UAE tax training, accounting system implementation support, and educational resources for finance teams.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔍</div>
-                    <h3>Due Diligence</h3>
-                    <p>Financial due diligence for acquisitions, investment readiness assessments, and comprehensive financial health reviews.</p>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- ABOUT PAGE -->
-    <div id="about" class="page">
-        <section class="about">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>About Prime Clarity</h2>
-                    <p>Prime Clarity LLC is a UAE-based financial advisory and accounting firm dedicated to providing exceptional service to growing businesses, entrepreneurs, and professionals across the Emirates.</p>
-                    <p>Founded on principles of precision, transparency, and strategic insight, we combine deep technical expertise with practical business understanding to deliver solutions that drive real value.</p>
-                    <p>Our team brings extensive experience in UAE taxation, international accounting standards, and financial management, serving clients across diverse industries from technology startups to established enterprises.</p>
-                </div>
-                <div class="about-image">
-                    <div class="service-card">
-                        <h3>Our Approach</h3>
-                        <p style="margin-bottom: 1rem;">We believe financial management should be strategic, not just administrative. Our methodology focuses on:</p>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="padding: 0.5rem 0;">✓ Proactive compliance management</li>
-                            <li style="padding: 0.5rem 0;">✓ Strategic tax optimization</li>
-                            <li style="padding: 0.5rem 0;">✓ Clear financial communication</li>
-                            <li style="padding: 0.5rem 0;">✓ Sustainable business growth</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- RESOURCES PAGE (with Ebook) -->
-    <div id="resources" class="page">
-        <div class="ebook-page active">
-            <div class="ebook-header">
-                <h1>UAE Corporate Tax Compliance Guide</h1>
-                <p class="subtitle">A comprehensive reference for founders, finance professionals, and business owners navigating UAE's corporate tax framework</p>
-            </div>
-
-            <div class="ebook-content">
-                <div class="value-section">
-                    <h2>What's Inside</h2>
-                    <ul class="benefits-list">
-                        <li>Complete overview of UAE Corporate Tax Law provisions and requirements</li>
-                        <li>Registration procedures and timelines for mainland and free zone entities</li>
-                        <li>Tax calculation methodologies with practical examples</li>
-                        <li>Compliance calendar and critical filing deadlines</li>
-                        <li>Transfer pricing documentation requirements</li>
-                        <li>Small business relief criteria and optimization strategies</li>
-                        <li>Common pitfalls and how to avoid penalties</li>
-                        <li>Real-world case studies and scenarios</li>
-                    </ul>
-                </div>
-
-                <div class="target-audience">
-                    <h3>Who This Guide Is For</h3>
-                    <ul>
-                        <li>Founders and business owners preparing for tax compliance</li>
-                        <li>Finance professionals managing UAE entity taxation</li>
-                        <li>Accounting students and exam candidates</li>
-                        <li>CFOs and controllers in UAE-based companies</li>
-                        <li>Consultants advising clients on UAE tax matters</li>
-                    </ul>
-                </div>
-
-                <div class="value-section">
-                    <h2>Why This Guide</h2>
-                    <p style="margin-bottom: 1rem;">The UAE's corporate tax regime represents a significant shift in the region's fiscal landscape. This guide distills complex regulations into actionable knowledge, saving you hours of research and reducing compliance risk.</p>
-                    <p>Created by practicing tax professionals with direct experience in UAE corporate tax advisory, this is a practical reference tool, not theoretical content.</p>
-                </div>
-
-                <div class="cta-section">
-                    <div class="price">USD 29</div>
-                    <button class="cta-button" onclick="redirectToCheckout()">Get the Guide</button>
-                    <p class="secure-note">Secure checkout powered by Gumroad • Instant digital delivery</p>
-                </div>
-            </div>
+<!-- HERO -->
+<section class="hero panel" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Abu Dhabi · UAE-licensed · IFRS</span>
+        <h1>Clarity over your numbers, <span class="accent">command</span> over your business.</h1>
+        <p class="lead">Prime Clarity is a boutique accounting and CFO advisory firm for UAE SMEs. Bookkeeping, VAT, corporate tax and IFRS reporting — run as a system, not a year-end scramble.</p>
+        <div class="hero-cta">
+          <a class="btn btn-gold book-call" href="https://calendly.com/primeclarityconsulting/30min" target="_blank" rel="noopener">Book a discovery call</a>
+          <a class="btn btn-ghost" href="#approach">See how we work</a>
         </div>
-    </div>
-
-    <!-- CONTACT PAGE -->
-    <div id="contact" class="page">
-        <section class="services" style="margin-top: 80px;">
-            <h2 class="section-title">Get In Touch</h2>
-            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-                <div class="service-card">
-                    <h3>Contact Prime Clarity</h3>
-                    <p style="margin-bottom: 1.5rem;">We're here to help you achieve financial clarity. Reach out to discuss your accounting, tax, or advisory needs.</p>
-                    <p style="margin-bottom: 0.5rem;"><strong>Email:</strong> <a href="mailto:primeclarityconsulting@gmail.com" style="color: var(--secondary); text-decoration: none;">primeclarityconsulting@gmail.com</a></p>
-                    <p style="margin-bottom: 0.5rem;"><strong>Phone:</strong> <a href="tel:+971564214851" style="color: var(--secondary); text-decoration: none;">+971 50 236 0789</a> | <a href="tel:+971505211929" style="color: var(--secondary); text-decoration: none;">+971 50 521 1929</a></p>
-                    <p style="margin-bottom: 1.5rem;"><strong>Location:</strong> United Arab Emirates</p>
-                    <a href="https://wa.me/971564214851" target="_blank" class="cta-button" style="display: inline-block; margin-top: 1rem;">Message on WhatsApp</a>
-                    <p style="margin-top: 2rem; color: #7a7a7a; font-size: 0.95rem;">Response time: Within 24 business hours</p>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Prime Clarity LLC</h3>
-                <p>Professional accounting, tax advisory, and financial consulting services in the United Arab Emirates.</p>
-                <p style="margin-top: 1rem;"><strong>Email:</strong> <a href="mailto:primeclarityconsulting@gmail.com">primeclarityconsulting@gmail.com</a></p>
-                <p><strong>Phone:</strong> <a href="tel:+971564214851">+971 50 521 1929</a></p>
-                <p><a href="https://wa.me/971564214851" target="_blank" style="color: var(--accent); font-weight: 600;">WhatsApp Us</a></p>
-            </div>
-            <div class="footer-section">
-                <h3>Services</h3>
-                <a href="#" onclick="showPage('services')">Accounting & Bookkeeping</a>
-                <a href="#" onclick="showPage('services')">UAE Corporate Tax</a>
-                <a href="#" onclick="showPage('services')">VAT Services</a>
-                <a href="#" onclick="showPage('services')">Financial Advisory</a>
-            </div>
-            <div class="footer-section">
-                <h3>Resources</h3>
-                <a href="#" onclick="showPage('resources')">UAE Tax Guide</a>
-                <a href="#" onclick="showPage('about')">About Us</a>
-                <a href="#" onclick="showPage('contact')">Contact</a>
-            </div>
-            <div class="footer-section">
-                <h3>Legal</h3>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <p style="margin-top: 1.5rem; font-size: 0.9rem;">All content provided is for educational purposes only and does not constitute legal or tax advice.</p>
-            </div>
+      </div>
+      <div class="pulse-panel" aria-hidden="true">
+        <div class="pulse-head">
+          <span class="t">Business vital signs</span>
+          <span class="v">● live</span>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Prime Clarity LLC. All rights reserved. | United Arab Emirates</p>
+        <svg class="pulse-svg" viewBox="0 0 460 108" preserveAspectRatio="none">
+          <line class="pulse-base" x1="0" y1="54" x2="460" y2="54"/>
+          <path class="pulse-path" d="M0 54 L70 54 L88 54 L100 30 L112 78 L124 18 L136 54 L210 54 L228 54 L240 38 L252 66 L264 54 L340 54 L356 54 L368 26 L380 80 L392 22 L404 54 L460 54"/>
+        </svg>
+        <div class="pulse-foot">
+          <div>Cash<strong>Healthy</strong></div>
+          <div>Margin<strong>Tracked</strong></div>
+          <div>Tax<strong>Compliant</strong></div>
         </div>
-    </footer>
+      </div>
+    </div>
+    <div class="trust">
+      <span>UAE-licensed firm</span>
+      <span>FTA VAT &amp; Corporate Tax</span>
+      <span>IFRS reporting</span>
+      <span>QuickBooks · Zoho · Wafeq</span>
+      <span>Retainer model</span>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Page Navigation System
-        function showPage(pageId) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
-            
-            const targetPage = document.getElementById(pageId);
-            if (targetPage) {
-                targetPage.classList.add('active');
-                window.scrollTo(0, 0);
-            }
-        }
+<!-- VSL -->
+<section id="watch" class="panel">
+  <div class="wrap">
+    <div class="sec-head reveal" style="max-width:60ch">
+      <span class="eyebrow">Watch · 2 min</span>
+      <h2>See how Prime Clarity works.</h2>
+      <p>A short walkthrough of how we turn a messy set of books into numbers you can actually run the business on.</p>
+    </div>
+    <!--
+      ▶ TO ADD YOUR VSL: delete the <button class="vsl-poster"> ... </button> below
+        and replace it with your YouTube embed, like this:
 
-        // Gumroad Redirect Function
-        function redirectToCheckout() {
-            const gumroadUrl = 'https://clarityprime.gumroad.com/l/yphfp';
-            window.location.href = gumroadUrl;
-        }
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID?rel=0"
+          title="Prime Clarity VSL" loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#') {
-                    e.preventDefault();
-                }
-            });
+        (YOUR_VIDEO_ID is the code in your link, e.g. youtu.be/AbC123dEfG -> AbC123dEfG)
+        The .video wrapper already handles responsive 16:9 sizing — just paste the iframe inside it.
+    -->
+    <div class="video reveal">
+      <button class="vsl-poster" type="button" aria-label="Video sales letter — coming soon">
+        <span class="play"><svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true"><path d="M8 5 L19 12 L8 19 Z" fill="#0C1E26"/></svg></span>
+        <span class="vsl-label">Your VSL goes here</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="panel">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">What we do</span>
+      <h2>Everything an SME's finance function needs — without the overhead of building one.</h2>
+      <p>One firm for your books, your filings and the advice that actually moves the business. Senior delivery led by an experienced auditor; nothing outsourced to a black box.</p>
+    </div>
+    <div class="svc-grid reveal">
+      <div class="svc">
+        <span class="num">01</span>
+        <h3>Bookkeeping</h3>
+        <p>Clean, current, reconciled books every month — so you always know where you stand, not where you stood last quarter.</p>
+      </div>
+      <div class="svc">
+        <span class="num">02</span>
+        <h3>VAT compliance</h3>
+        <p>Accurate FTA returns, input/output reconciliation and filing on time, every period. No surprises, no penalties.</p>
+      </div>
+      <div class="svc">
+        <span class="num">03</span>
+        <h3>Corporate tax</h3>
+        <p>Registration, calculation and filing under the UAE corporate tax regime, with planning built in before the year closes.</p>
+      </div>
+      <div class="svc">
+        <span class="num">04</span>
+        <h3>IFRS reporting</h3>
+        <p>Financial statements prepared to standard — investor-ready, bank-ready and audit-ready when you need them.</p>
+      </div>
+      <div class="svc">
+        <span class="num">05</span>
+        <h3>CFO advisory</h3>
+        <p>Cash-flow visibility, margin analysis and scenario planning. The judgement of a finance chief, on a fraction of the cost.</p>
+      </div>
+      <div class="svc">
+        <span class="num">06</span>
+        <h3>Compliance &amp; setup</h3>
+        <p>UBO, ESR and the regulatory housekeeping that keeps your licence clean — handled before it becomes a notice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH / VITAL SIGNS -->
+<section class="approach panel" id="approach">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The Prime Clarity method</span>
+      <h2>We read your business by its five vital signs.</h2>
+      <p>Most firms hand you a report and disappear. We monitor the five numbers that actually predict whether a business stays healthy — and we tell you before they move, not after.</p>
+    </div>
+    <div class="vitals reveal">
+      <div class="vital">
+        <span class="vnum">VS·01</span>
+        <div class="tick"><svg viewBox="0 0 80 24" preserveAspectRatio="none"><path d="M0 12 L20 12 L26 4 L32 20 L38 12 L80 12" fill="none" stroke="#C99A3F" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>Cash position</h3>
+        <p>What's actually in the bank versus what's committed — the only number that ends companies.</p>
+      </div>
+      <div class="vital">
+        <span class="vnum">VS·02</span>
+        <div class="tick"><svg viewBox="0 0 80 24" preserveAspectRatio="none"><path d="M0 18 L20 14 L40 12 L60 7 L80 4" fill="none" stroke="#C99A3F" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>Profitability</h3>
+        <p>Gross and net margin tracked over time, so growth is real and not just busier.</p>
+      </div>
+      <div class="vital">
+        <span class="vnum">VS·03</span>
+        <div class="tick"><svg viewBox="0 0 80 24" preserveAspectRatio="none"><path d="M0 6 L18 6 L24 18 L30 6 L48 6 L54 18 L60 6 L80 6" fill="none" stroke="#C99A3F" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>Collections</h3>
+        <p>Receivables age and who owes you — the cash hiding inside your own invoices.</p>
+      </div>
+      <div class="vital">
+        <span class="vnum">VS·04</span>
+        <div class="tick"><svg viewBox="0 0 80 24" preserveAspectRatio="none"><path d="M0 4 L40 4 L44 12 L80 20" fill="none" stroke="#C99A3F" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>Runway</h3>
+        <p>How many months you can operate at current burn — and what changes that, before it bites.</p>
+      </div>
+      <div class="vital">
+        <span class="vnum">VS·05</span>
+        <div class="tick"><svg viewBox="0 0 80 24" preserveAspectRatio="none"><path d="M0 12 L24 12 L30 12 L36 6 L42 12 L80 12" fill="none" stroke="#C99A3F" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>Compliance</h3>
+        <p>VAT, corporate tax and licence obligations — green, on time, and never a last-minute fire.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="panel">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Retainers, not hourly surprises</span>
+      <h2>Three ways to work with us.</h2>
+      <p>Fixed monthly retainers so you know exactly what you pay and exactly what you get. Move up a tier as the business grows — never start over.</p>
+    </div>
+    <div class="price-grid reveal">
+      <div class="tier">
+        <span class="tname">Clarity Core</span>
+        <h3>Core</h3>
+        <p class="pfor">For SMEs that need clean, compliant books and zero filing anxiety.</p>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5 L5.5 11 L12 3" stroke="#C99A3F" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Monthly bookkeeping &amp; reconciliation</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5 L5.5 11 L12 3" stroke="#C99A3F" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Quarterly VAT returns &amp; filing</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5 L5.5 11 L12 3" stroke="#C99A3F" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Corporate tax registration</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5 L5.5 11 L12 3" stroke="#C99A3F" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Year-end financial statements</li>
+        </ul>
+        <a class="btn btn-dark" href="#contact">Start with Core</a>
+      </div>
+      <div class="tier featured">
+        <span class="badge">Most chosen</span>
+        <span class="tname">Clarity Growth</span>
+        <h3>Growth</h3>
+        <p class="pfor">For growing businesses that need to see the numbers, not just file them.</p>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5 L5.5 11 L12 3" stroke="#C99A3F" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Core</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5 L5.5 11 L12 3" stroke="#C99A3F" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Monthly management reporting</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5 L5.5 11 L12 3" stroke="#C99A3F" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Cash-flow &amp; margin tracking</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5 L5.5 11 L12 3" stroke="#C99A3F" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Corporate tax planning &amp; filing</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5 L5.5 11 L12 3" stroke="#C99A3F" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Quarterly review call</li>
+        </ul>
+        <a class="btn btn-gold" href="#contact">Choose Growth</a>
+      </div>
+      <div class="tier">
+        <span class="tname">Clarity Command</span>
+        <h3>Command</h3>
+        <p class="pfor">For founders scaling — a fractional CFO in your corner, board-ready.</p>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5 L5.5 11 L12 3" stroke="#C99A3F" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Growth</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5 L5.5 11 L12 3" stroke="#C99A3F" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Fractional CFO advisory</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5 L5.5 11 L12 3" stroke="#C99A3F" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Board-ready reporting &amp; forecasts</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5 L5.5 11 L12 3" stroke="#C99A3F" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Scenario &amp; capital planning</li>
+          <li><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 7.5 L5.5 11 L12 3" stroke="#C99A3F" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Rakam live dashboard access</li>
+        </ul>
+        <a class="btn btn-dark" href="#contact">Talk to us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RAKAM -->
+<section class="rakam panel" id="rakam">
+  <div class="wrap">
+    <div class="rakam-grid">
+      <div class="reveal">
+        <span class="tag">Rakam · in development</span>
+        <h2>Your five vital signs, live — in one dashboard.</h2>
+        <p>Rakam connects to your accounting stack and turns your books into a real-time read on the health of the business. Built by Prime Clarity, for the businesses we serve.</p>
+        <div class="feat">
+          <div><strong>5</strong>vital signs</div>
+          <div><strong>4</strong>integrations</div>
+          <div><strong>Live</strong>not month-end</div>
+        </div>
+      </div>
+      <div class="dash reveal" aria-hidden="true">
+        <div class="dash-row"><span class="l">Cash position</span><span class="r up">AED 482,300 ▲</span></div>
+        <div class="dash-row"><span class="l">Net margin</span><span class="r up">18.4% ▲</span></div>
+        <div class="dash-row"><span class="l">Receivables (60d+)</span><span class="r">AED 96,100</span></div>
+        <div class="dash-row"><span class="l">Runway</span><span class="r">9.2 months</span></div>
+        <div class="dash-row"><span class="l">Compliance</span><span class="r up">All current ✓</span></div>
+        <div class="dash-bar"><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="panel">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="reveal">
+        <span class="eyebrow">Who we are</span>
+        <p class="quote" style="margin-top:18px">A father's audit discipline. A son's drive to grow. <span>One firm built so your numbers never blindside you.</span></p>
+        <p class="who">Prime Clarity — Abu Dhabi, United Arab Emirates</p>
+      </div>
+      <div class="about-stats reveal">
+        <div><div class="n">Boutique</div><div class="k">Senior delivery, no juniors</div></div>
+        <div><div class="n">SME-only</div><div class="k">We speak your business</div></div>
+        <div><div class="n">IFRS</div><div class="k">Standards, properly applied</div></div>
+        <div><div class="n">Retainer</div><div class="k">A partner, not a vendor</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-final panel" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-intro reveal">
+        <span class="eyebrow">Let's talk</span>
+        <h2>See your business clearly.</h2>
+        <p>Thirty minutes, no obligation. Tell us where you stand and we'll tell you honestly whether we're the right fit.</p>
+        <div class="contact-methods">
+          <a class="cm book-call" href="https://calendly.com/primeclarityconsulting/30min" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>
+            Book a 30-minute call
+          </a>
+          <a class="cm" href="https://wa.me/971505211929?text=Hi%20Prime%20Clarity%2C%20I%27d%20like%20to%20book%20a%20discovery%20call." target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9 1-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.2 1.3 1.1 1.8 1.1 2.1 1l.6-.7c.2-.3.4-.2.7-.1l1.9.9c.3.2.5.2.5.4.1.2.1.7-.1 1.3Z"/></svg>
+            WhatsApp · +971 50 521 1929
+          </a>
+          <a class="cm" href="tel:+971505211929">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 4h3l1.5 4.5L7.5 10a11 11 0 0 0 6 6l1.5-2 4.5 1.5V19a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke-linejoin="round"/></svg>
+            +971 50 521 1929
+          </a>
+          <a class="cm" href="mailto:advisory@primeclarity.ae">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            advisory@primeclarity.ae
+          </a>
+          <span class="cm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            Office 46-(543), Corniche Tower, Al Hisn, Abu Dhabi
+          </span>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" id="cform" novalidate>
+        <div class="field">
+          <label for="f-name">Name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="f-company">Company <span style="text-transform:none;letter-spacing:0;color:var(--line)">(optional)</span></label>
+          <input id="f-company" name="company" type="text" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="f-message">How can we help?</label>
+          <textarea id="f-message" name="message" rows="4" required></textarea>
+        </div>
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit" class="btn btn-gold" id="cbtn">Send enquiry</button>
+        <p class="form-note" id="cnote" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div style="max-width:280px">
+        <a class="brand" href="#top">
+          <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="1" y="1" width="22" height="22" rx="3" stroke="#C99A3F" stroke-width="1.5"/>
+            <path d="M4 14 L8 14 L10 8 L13 18 L15 11 L20 11" stroke="#C99A3F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          Prime&nbsp;Clarity
+        </a>
+        <p style="margin-top:16px;font-size:14px;color:#bfcccf">Boutique accounting &amp; CFO advisory for UAE SMEs. Abu Dhabi, UAE.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <a href="#services">Bookkeeping</a>
+        <a href="#services">VAT &amp; corporate tax</a>
+        <a href="#services">IFRS reporting</a>
+        <a href="#services">CFO advisory</a>
+      </div>
+      <div class="foot-col">
+        <h4>Firm</h4>
+        <a href="#approach">Our method</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#rakam">Rakam</a>
+        <a href="guide.html">UAE Tax Guide</a>
+        <a href="#about">About</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="mailto:advisory@primeclarity.ae">advisory@primeclarity.ae</a>
+        <a href="https://wa.me/971505211929" target="_blank" rel="noopener">WhatsApp · +971 50 521 1929</a>
+        <a href="tel:+971505211929">Call · +971 50 521 1929</a>
+        <a href="https://maps.google.com/?q=Corniche+Tower+Al+Hisn+Abu+Dhabi" target="_blank" rel="noopener">Office 46-(543), Corniche Tower, Al Hisn, Abu Dhabi</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Prime Clarity LLC SPC · Abu Dhabi, United Arab Emirates. All rights reserved.</span>
+      <span class="foot-legal"><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile nav
+  const t=document.getElementById('navToggle'),l=document.getElementById('navLinks');
+  t.addEventListener('click',()=>{const o=l.classList.toggle('open');t.setAttribute('aria-expanded',o)});
+  l.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{l.classList.remove('open');t.setAttribute('aria-expanded',false)}));
+  // year
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  // reveal on scroll
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.01,rootMargin:'0px 0px 14% 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  // liquid-glass nav on scroll
+  const nav=document.querySelector('header.nav');
+  const onScroll=()=>{nav.classList.toggle('scrolled',window.scrollY>24)};
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // ---- inertia smooth scroll (desktop pointer only; sticky-safe) ----
+  (function(){
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if(matchMedia('(hover: none), (pointer: coarse)').matches) return; // touch keeps native momentum
+
+    const html=document.documentElement;
+    html.style.scrollBehavior='auto';                 // engine provides the smoothing
+    let target=window.scrollY, current=target, running=false;
+    const ease=0.09;
+    const maxY=()=>html.scrollHeight-window.innerHeight;
+    const clamp=v=>Math.max(0,Math.min(v,maxY()));
+
+    function frame(){
+      const diff=target-current;
+      current+=diff*ease;
+      if(Math.abs(diff)<0.5){current=target;window.scrollTo(0,current);running=false;return;}
+      window.scrollTo(0,current);
+      requestAnimationFrame(frame);
+    }
+    function run(){if(!running){running=true;requestAnimationFrame(frame);}}
+
+    window.addEventListener('wheel',e=>{
+      if(e.ctrlKey)return;                              // allow pinch-zoom
+      e.preventDefault();
+      let d=e.deltaY;
+      if(e.deltaMode===1)d*=16; else if(e.deltaMode===2)d*=window.innerHeight;
+      target=clamp(target+d);run();
+    },{passive:false});
+
+    window.addEventListener('keydown',e=>{
+      const t=e.target,tag=(t.tagName||'').toLowerCase();
+      if(tag==='input'||tag==='textarea'||tag==='select'||t.isContentEditable)return;
+      const vh=window.innerHeight;let d;
+      if(e.key==='ArrowDown')d=90;
+      else if(e.key==='ArrowUp')d=-90;
+      else if(e.key==='PageDown'||e.key===' ')d=vh*0.9;
+      else if(e.key==='PageUp')d=-vh*0.9;
+      else if(e.key==='Home'){target=0;run();e.preventDefault();return;}
+      else if(e.key==='End'){target=maxY();run();e.preventDefault();return;}
+      else return;
+      target=clamp(target+d);run();e.preventDefault();
+    });
+
+    // resync when idle (scrollbar drag, find-in-page, focus jumps)
+    window.addEventListener('scroll',()=>{if(!running)current=target=window.scrollY;},{passive:true});
+    window.addEventListener('resize',()=>{target=clamp(target);});
+
+    // anchor links glide through the engine
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const id=a.getAttribute('href');
+        if(id.length<2)return;
+        const el=document.querySelector(id);
+        if(!el)return;
+        e.preventDefault();
+        target=clamp(el.getBoundingClientRect().top+window.scrollY);run();
+      });
+    });
+  })();
+
+  // ---- contact form (Web3Forms backend — free, no server needed) ----
+  (function(){
+    const form=document.getElementById('cform');
+    if(!form)return;
+    const note=document.getElementById('cnote');
+    const btn=document.getElementById('cbtn');
+
+    // ▼▼▼ PASTE YOUR KEY HERE ▼▼▼
+    // Get a free access key at https://web3forms.com (enter advisory@primeclarity.ae;
+    // they email you the key). Submissions then arrive in that inbox. Unlimited, free.
+    const WEB3FORMS_KEY="024e119f-4f18-4d9d-912e-5f93c8ea6d6d";
+    // ▲▲▲ PASTE YOUR KEY HERE ▲▲▲
+
+    const val=n=>(form.elements[n]?.value||"").trim();
+    const say=(msg,kind)=>{note.className="form-note"+(kind?" "+kind:"");note.textContent=msg;};
+
+    form.addEventListener("submit",async e=>{
+      e.preventDefault();
+      say("");
+      if(form.elements["botcheck"]&&form.elements["botcheck"].checked)return; // honeypot
+      if(!val("name")||!val("email")||!val("message")){
+        say("Please add your name, email and a short message.","err");return;
+      }
+      if(WEB3FORMS_KEY==="YOUR_WEB3FORMS_ACCESS_KEY"){
+        say("Form isn't connected yet — add your Web3Forms key in the code to go live.","err");return;
+      }
+      const label=btn.textContent;btn.disabled=true;btn.textContent="Sending…";
+      try{
+        const r=await fetch("https://api.web3forms.com/submit",{
+          method:"POST",
+          headers:{"Content-Type":"application/json","Accept":"application/json"},
+          body:JSON.stringify({
+            access_key:WEB3FORMS_KEY,
+            subject:"New enquiry from primeclarity.ae",
+            from_name:"Prime Clarity website",
+            name:val("name"),email:val("email"),
+            company:val("company"),message:val("message")
+          })
         });
-    </script>
+        const data=await r.json();
+        if(data.success){form.reset();say("Thanks — we\u2019ll be in touch within one business day.","ok");}
+        else{say("Something went wrong. Please email advisory@primeclarity.ae.","err");}
+      }catch(err){
+        say("Network error. Please WhatsApp or email us instead.","err");
+      }finally{
+        btn.disabled=false;btn.textContent=label;
+      }
+    });
+  })();
+
+  // ---- Calendly popup on "Book a call" buttons ----
+  document.querySelectorAll('.book-call').forEach(function(b){
+    b.addEventListener('click',function(e){
+      if(window.Calendly){e.preventDefault();Calendly.initPopupWidget({url:'https://calendly.com/primeclarityconsulting/30min'});}
+    });
+  });
+</script>
 </body>
 </html>
